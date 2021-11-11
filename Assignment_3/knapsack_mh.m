@@ -35,14 +35,13 @@ function [publ_k, priv_k] = knapsack_mh(s)
         x = randi([2, mu - 2], 1, 1);
         w = x / gcd(mu, x);
         
-        if gcd(w, mu) == 1
+        [G, U, V] = gcd (w, mu);
+        if G == 1
             [flag, factor] = common_factors(w, s);
+            priv_k(end + 1) = U;
+            break;
         end
     end
-    
-    %TODO: 
-    %   - Falta introducir en priv_k el inverso w mod(mu).
-    priv_k(end + 1) = -1;
     
     publ_k = [];
     for i = 1:s_length

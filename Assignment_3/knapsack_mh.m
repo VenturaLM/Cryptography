@@ -1,6 +1,8 @@
 function [publ_k, priv_k] = knapsack_mh(s)
-    %KNAPSACK_MH
-    %   [PUBL_K, PRIV_K] = KNAPSACK_MH(S)
+    %KNAPSACK_MH generate both public and private keys using a simple
+    %knapsack.
+    %   [PUBL_K, PRIV_K] = KNAPSACK_MH(S) returns the public and the
+    %   private keys.
     
     tic
     

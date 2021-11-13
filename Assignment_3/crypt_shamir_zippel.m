@@ -1,6 +1,7 @@
 function s = crypt_shamir_zippel(publ_k, mu)
-    %KNAPSACK_MH
-    %   [PUBL_K, PRIV_K] = KNAPSACK_MH(S)
+    %KNAPSACK_MH Shamir and Zippel cryptoanalysis.
+    %   [PUBL_K, PRIV_K] = KNAPSACK_MH(S) returns the simple knapsack
+    %   asociated to a cipher.
     
     tic
     

@@ -1,7 +1,7 @@
 function text = decipher_kmh(s, code, mu, invw)
     %DECIPHER_KMH decipher a code encrypted with a knapsack using a public
     %key.
-    %   TEXT = DECIPHER_KMH(S, CODE, MU, INVW) return the clean text of a encrypted text.
+    %   TEXT = DECIPHER_KMH(S, CODE, MU, INVW) returns the clean text of a encrypted text.
     
     tic
     

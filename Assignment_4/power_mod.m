@@ -36,7 +36,7 @@ function pow = power_mod(b, e, m)
     end
 
     powers_length = length(powers);
-    % Since in MATLAB first element is 1, add to the first element + 1, so that 0 --> 1.
+    % Since MATLAB's first element is 1, add to the first element + 1, so that 0 --> 1.
     powers = powers + 1;
     pow = 1;
     for i = 1:powers_length

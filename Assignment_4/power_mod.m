@@ -28,7 +28,8 @@ function pow = power_mod(b, e, m)
     % Computer the powers from [ b^e^powers_0 , b^e^powers_n ].
     result = [];
     last_power = powers(end);
-    result(end + 1) = mod(b^(2^(0)), m);
+    % Line 32: Actually mod(b^(2^(0)), m), what is equal to mod(b, m).
+    result(end + 1) = mod(b, m);
 
     for i = 1:last_power
         new_power = result(end) * result(end);

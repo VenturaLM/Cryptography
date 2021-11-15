@@ -3,8 +3,8 @@ function gen = generate_0(g, p)
     %multiplicative group determined by the prime number p.
     %NOTE: Brute force algorithm.
     %   GEN = GENERATE_O(G, P) returns:
-    %       - 0: the number is not a generating set of a group.
-    %       - g: generator number.
+    %       - 0: if the number is not a generating set of a group.
+    %       - g: if g is a generator number.
 
     tic
     

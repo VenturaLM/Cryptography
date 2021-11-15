@@ -10,6 +10,11 @@ function diffie_hellman
     
     disp('COMMON ELEMENTS');
     p = input('Introduce a prime number p:\n> ');
+    
+    if isprime(p) == 0
+        error('%d is not a primer number.\n', p);
+    end
+    
     g = input( sprintf('Introduce a generator g of the multiplicative group determine by %d:\n> ', p));
     
     gen = generate(g, p);
@@ -43,7 +48,7 @@ function diffie_hellman
     pow = power_mod(a_key, b, p);
     fprintf('B obtains power_mod(%d, %d, %d) = %d\n', a_key, b, p, pow);
     
-    return;
     toc
+    return;
 end
 

@@ -5,7 +5,7 @@ function pow = power_mod(b, e, m)
     %       e: exponent. Natural number.
     %       m: module. Natural number.
     
-    tic
+    %tic
     
     % Converts numbers to uint64 type.
     b = uint64(b);
@@ -44,6 +44,6 @@ function pow = power_mod(b, e, m)
         pow = mod( uint64(result(powers(i))) * uint64(pow), m );
     end
 
-    toc
+    %toc
 end
 

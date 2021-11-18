@@ -20,7 +20,7 @@ function pow = power_mod(b, e, m)
             return;
     end
     
-    assert(e < 0, 'e must be equal or greater that 0.');
+    assert(e > 0, 'e must be equal or greater that 0.');
     
     switch e
         case 0

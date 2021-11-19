@@ -9,9 +9,13 @@ function v = prepare_num_cipher(d, double)
     
     double_length = length(double);
     
-    while rem(double_length, d) ~= 0
+    while rem(double_length, d) > 1
+        double = strcat(double, '30');
+        double_length = double_length + 2;
+    end
+    
+    if rem(double_length, d) == 1
         double = strcat(double, '0');
-        double_length = double_length + 1;
     end
     
     v = str2num(reshape(double, d, [])');

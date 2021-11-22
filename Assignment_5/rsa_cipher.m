@@ -9,16 +9,16 @@ function v = rsa_cipher(n, e, text)
     % Convert text to numbers.
     numbered_text = letter_2numbers(text);
     
-    % Rearrange the number string into blocks of size digits(n) - 1.
+    % Rearrange the numbers string into blocks of size digits(n) - 1.
     blocks_size = length(num2str(n)) - 1;
     blocks = prepare_num_cipher(blocks_size, numbered_text);
     
-    v = [];
     % Cipher each block.
-    % FIXME: Al ejecutar el ejemplo dado, el último elemento del
-    % criptograma da un número incorrecto.
-    for i = 1:length(blocks)
-        v(end + 1) = power_mod(blocks(i), e, n);
+    blocks_length = length(blocks);
+    v = zeros(1, blocks_length);
+    
+    for i = 1:blocks_length
+        v(i) = power_mod(blocks(i), e, n);
     end
 end
 

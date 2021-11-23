@@ -10,6 +10,7 @@ function text = num_decipher(n, blocks)
     
     text = '-';
     blocks_length = length(blocks);
+    assert(blocks_length > 0, 'Input blocks parameter is empty.');
     blocks_size = length(num2str(n)) - 1;
     
     % Auxiliar blocks in char type.

@@ -5,9 +5,7 @@ function text = rsa_decipher(n, d, code)
     %   - n and d: private keys.
     %   - code: ciphered numerical array.
     
-    text = '-';
     v = rsa_num_decipher(n, d, code);
-    
     text = num_decipher(n, v);
     
 end

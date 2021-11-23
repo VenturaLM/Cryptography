@@ -31,15 +31,20 @@ function text = num_decipher(n, blocks)
     char_blocks = reshape(char_blocks, 2, [])';
     
     % Eliminate the possible 30's and / or 0's that may be at the end.
-    for i = 1:length(char_blocks)
-        if char_blocks(i,:) == '30'
-            char_blocks(i,:) = [];
-        end
+    char_blocks_length = length(char_blocks);
+    
+    if rem(char_blocks_length, 2) ~=0
+        char_blocks(end) = [];
     end
     
-    char_blocks
-    
-    %TODO: numbers2letter (?)
+    while char_blocks(end, :) == '30'
+        char_blocks(end, :) = [];
+    end
+
+    % Convert numbers to letters.
+    alphabet = 'abcdefghijklmnnopqrstuvwxyz';
+    alphabet(15) = char(241);
+    text = alphabet(str2num(char_blocks) + 1);
     
 end
 

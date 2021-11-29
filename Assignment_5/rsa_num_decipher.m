@@ -8,7 +8,7 @@ function v = rsa_num_decipher(n, d, code)
     % Decipher function: code(i)^(d) = x mod(n).
     code_length = length(code);
     assert(code_length > 0, 'The cryptogram is empty.');
-    v = zeros(1,code_length);
+    v = zeros(1, code_length);
     
     for i = 1:code_length
         v(i) = power_mod(code(i), d, n);

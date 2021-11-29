@@ -41,10 +41,40 @@ for i = 1:length(ciphered_signature_a)
 end
 
 % Divide the a_tmp_blocks in digits(nb) - 1.
-
-ciphered_signature_a = prepare_num_cipher(6, a_tmp_blocks);
-
+ciphered_signature_a = prepare_num_cipher(length(num2str(nb)) - 1, a_tmp_blocks);
 
 % A ciphers its ciphered signature with B's public key.
-ciphered_signature_a = rsa_num_cipher(nb, eb, ciphered_signature_a)
+ciphered_signature_a = rsa_num_cipher(nb, eb, ciphered_signature_a);
 
+fprintf('The two cryptograms that A sends to B are:');
+ciphered_text_a
+ciphered_signature_a
+
+fprintf('AGENT B\nB starts deciphering the codes.\n');
+fprintf('The text he has received jointly with the signature is:\n');
+
+% B deciphers 'ciphered_text_a' with its private key.
+text = rsa_decipher(nb, db, ciphered_text_a)
+
+% When B tries to deciphers 'ciphered_signature_a' with its private key, it
+% will obtain something that may not understand.
+signature = rsa_num_decipher(nb, db, ciphered_signature_a);
+
+% In order to decipher the signature, we have to adapt following A's keys.
+char_signature = '';
+for i = 1:length(signature)
+    char_signature = strcat(char_signature, num2str(signature(i)));
+end
+
+% Prepare decipher blocks.
+while rem(length(char_signature), a_block_size) ~= 0
+    char_signature = strcat('0', char_signature);
+end
+
+% Convert the character signature into char array and then into a numerical
+% array.
+char_signature = cell2mat(cellstr(reshape(char_signature, a_block_size, [])'));
+signature = str2num(char_signature);
+
+% Decipher with A's public keys.
+signature = rsa_decipher(na, ea, signature)

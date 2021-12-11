@@ -1,6 +1,6 @@
 function pixel_disorder(photo, A)
     %PIXEL_DISORDER function that disorder the pixels of the matrices
-    %associated to an image. It also saves the matrices.
+    %associated to an image. The matrix is saved in getappdata(gcf, 'matrix', ...).
     %   - photo: image required to disorder.
     %       - Constraints: The matrix associated to the image has to be
     %       squared.
@@ -12,10 +12,10 @@ function pixel_disorder(photo, A)
     
     % --------------------------------
     % DATA TO TEST
-     photo = 'imagenes/disorder.bmp';
+    % photo = 'imagenes/disorder.bmp';
     % Original A:
     % A = [1 3;1 1];
-    % Inverse of A:
+    % A inverse:
     % A = [200 202;201 200];
     % --------------------------------
     
@@ -24,6 +24,7 @@ function pixel_disorder(photo, A)
     assert(rows == cols, 'A is not squared.');
     
     % Read image and check constraints.
+    assert(isa(photo, 'char'), 'Argument <photo> is not a valid file input.');
     X = imread(photo);
     [rows, cols, p] = size(X);
     assert(rows == cols, 'The matrix associated to the image is not squared.');
@@ -49,6 +50,7 @@ function pixel_disorder(photo, A)
         end
     end
     
-    %TODO: guardar las imágenes con setappdata...
+    % Save the new matrix (disordered_image).
+    setappdata(gcf, 'matrix', disordered_image);
 end
 

@@ -13,13 +13,13 @@ function arnold(photo, A)
     %       - photo = transformation matrix.
     %       - A = original image.
     
-    prompt = input('Order or disorder 1/2:\n> ', 's');
+    option = input('Option:\n1. Disorder an image.\n2. Order an image.\n3. Exit.\n> ', 's');
     
     % Flag used for an infinite loop until a valid option is selected.
     flag = 1;
 
     while flag == 1
-        switch prompt
+        switch option
             case '1'
                 % Disorder an image.
                 pixel_disorder(photo, A);
@@ -45,9 +45,12 @@ function arnold(photo, A)
                 
                 flag = 0;
                 
+            case '3'
+                return
+                
             otherwise
                 warning('The option selected is not valid.');
-                prompt = input('Order or disorder 1/2:\n> ', 's');
+                option = input('Option:\n1. Disorder an image.\n2. Order an image.\n3. Exit.\n> ', 's');
         end
     end
 end

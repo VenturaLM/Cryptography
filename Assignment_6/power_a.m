@@ -1,4 +1,4 @@
-function n = power2(A, m)
+function n = power_a(A, m)
     %POWER(A, m) Computes the minimum value of the exponent of the power of
     %A, that module m is equal to the identity matrix.
     %   N = POWER(A, M) returns the value of the exponent that makes A the

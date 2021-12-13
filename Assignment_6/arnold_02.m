@@ -24,7 +24,7 @@ function power = arnold_02(photo, A)
         switch option
             case '1'
                 % Disorder until reach the original image.
-                power = power2(A, module);
+                power = power_a(A, module);
                 
                 flag = 0;
                 

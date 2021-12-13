@@ -23,6 +23,15 @@ function pixel_disorder(photo, A)
     [rows, cols] = size(A);
     assert(rows == cols, 'A is not squared.');
     
+    for i = 1:rows
+        for j = 1:cols
+            aux = A(i, j);
+            if  ~isreal(aux) || ~isequal(round(aux),aux) || any(isinf(aux(:)))
+                error('The element A(%d, %d) is not an integer number.', i, j);
+            end
+        end
+    end
+    
     % Read image and check constraints.
     assert(isa(photo, 'char'), 'Argument <photo> is not a valid file input.');
     X = imread(photo);

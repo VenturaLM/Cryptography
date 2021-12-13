@@ -25,7 +25,7 @@ function power = arnold_02(photo, A)
             case '1'
                 % Disorder until reach the original image.
                 power = power_a(A, module);
-                
+                                
                 flag = 0;
                 
             case '2'
@@ -44,18 +44,29 @@ function power = arnold_02(photo, A)
     end
     
     % Apply transformation.
-    A_power = A;
     
+    % ---------------------
+    % See image transition.
     for i = 1:power
-        A_power = mod(A * A_power, module);
+        A_power = A;
+        for j = 1:i
+            A_power = mod(A * A_power, module);
+        end
+        
+        pixel_disorder(photo, A_power);
+        imshow(getappdata(gcf, 'matrix'));
     end
     
-    pixel_disorder(photo, A_power);
-    imshow(getappdata(gcf, 'matrix'));
+    % ---------------------
+    % Apply directly the transformation.
+    %A_power = A;
     
-    % TODO: Aunque no sea un parámetro de salida, también debe mostrar una animación que comience
-    %con la imagen original y muestre todas las imágenes transformadas que se hayan ido realizando.
-    %También debe guardar la última imagen de la sucesión de imágenes modificadas.
+    %for i = 1:power
+    %    A_power = mod(A * A_power, module);
+    %end
+    
+    %pixel_disorder(photo, A_power);
+    %imshow(getappdata(gcf, 'matrix'));
     
 end
 

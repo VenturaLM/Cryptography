@@ -10,7 +10,7 @@
 
 ### Assignment 6: Arnold's cat map
 
-## Assignment 7: MD5
+### Assignment 7: MD5
 
 ### Documentation
 
